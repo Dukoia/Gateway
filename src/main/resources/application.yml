@@ -1,0 +1,39 @@
+server:
+  port: 9000
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8000/eureka
+  instance:
+    prefer-ip-address: true
+spring:
+  application:
+    name: hp-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 500
+        min-idle: 0
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/gateway?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC
+    data-username: root
+    data-password: root
+    hikari:
+      username: root
+      password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
